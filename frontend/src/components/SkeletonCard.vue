@@ -8,10 +8,9 @@
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
+<style scoped>
 .skeleton-card {
-  background: rgba(255, 255, 255, 0.03);
+  background-color: #152433;
   border-radius: 12px;
   overflow: hidden;
   height: 100%;

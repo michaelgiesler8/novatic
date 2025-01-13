@@ -30,11 +30,11 @@
         <div v-if="showDemo" class="demo-modal">
           <div class="modal-overlay" @click="closeDemo"></div>
           <div class="modal-content">
+            <button @click="closeDemo" class="close-btn" aria-label="Close demo">
+              <i class="fas fa-times"></i>
+            </button>
             <div class="modal-header">
               <h4>{{ title }}</h4>
-              <button @click="closeDemo" class="close-btn" aria-label="Close demo">
-                <span class="close-icon"></span>
-              </button>
             </div>
             <iframe 
               v-if="iframeLoaded"
@@ -43,6 +43,8 @@
               allow="fullscreen"
               class="demo-iframe"
               @load="handleIframeLoad"
+              sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+              referrerpolicy="origin"
             ></iframe>
             <div v-else class="iframe-loader">
               <div class="loader-spinner"></div>
@@ -89,7 +91,7 @@ function closeDemo() {
 }
 
 function handleIframeLoad() {
-  // Removed isLoading reference
+  // Handle iframe load event if needed
 }
 
 function handleImageError() {
@@ -116,27 +118,27 @@ function handleImageError() {
 }
 
 .demo-card {
-  background: rgba(255, 255, 255, 0.03);
+  background-color: #152433;
   border-radius: 12px;
   overflow: hidden;
   height: 100%;
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   transform: translateZ(0);
-  
-  &:hover {
-    transform: translateY(-8px);
-    border-color: rgba(205, 215, 47, 0.4);
-    
-    .image-overlay {
-      opacity: 1;
-    }
-    
-    .launch-btn {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+}
+
+.demo-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(205, 215, 47, 0.4);
+}
+
+.demo-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.demo-card:hover .launch-btn {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .image-container {
@@ -199,11 +201,11 @@ function handleImageError() {
   cursor: pointer;
   transform: translateY(20px);
   opacity: 0;
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(28, 144, 255, 0.3);
-  }
+}
+
+.launch-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(28, 144, 255, 0.3);
 }
 
 .demo-modal {
@@ -216,7 +218,7 @@ function handleImageError() {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem; 
+  padding: 2rem;
 }
 
 .modal-overlay {
@@ -231,8 +233,8 @@ function handleImageError() {
 .modal-content {
   position: relative;
   width: 85%;
-  height: 80vh; 
-  max-height: 800px; 
+  height: 80vh;
+  max-height: 800px;
   background: #152433;
   border-radius: 12px;
   border: 1px solid rgba(205, 215, 47, 0.1);
@@ -248,41 +250,31 @@ function handleImageError() {
   align-items: center;
   border-bottom: 1px solid rgba(205, 215, 47, 0.1);
 }
-
 .close-btn {
   position: absolute;
-  right: 1rem;
-  top: 1rem;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.3);
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  padding: 0.5rem;
-}
-
-.close-icon {
-  display: block;
-  width: 20px;
-  height: 20px;
-  position: relative;
-}
-
-.close-icon::before,
-.close-icon::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
   background: #CDD72F;
-  top: 50%;
-  left: 0;
+  border: none;
+  color: #152433;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  z-index: 1001;
+}
+.close-btn:hover {
+  transform: scale(1.1);
+  background: #dae340;
 }
 
-.close-icon::before {
-  transform: rotate(45deg);
-}
-
-.close-icon::after {
-  transform: rotate(-45deg);
+.close-btn i {
+  font-size: 1.2rem;
 }
 
 .demo-iframe {

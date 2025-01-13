@@ -14,10 +14,10 @@
             Getting Started
           </button>
           <button class="nav-btn" @click="setCategory('tax-forms')" :class="{ active: activeCategory === 'tax-forms' }">
-            Tax Forms
+            Exporting
           </button>
           <button class="nav-btn" @click="setCategory('payroll')" :class="{ active: activeCategory === 'payroll' }">
-            Payroll
+            Payments
           </button>
           <button class="nav-btn" @click="setCategory('reports')" :class="{ active: activeCategory === 'reports' }">
             Reports
@@ -82,16 +82,26 @@ watch(() => route.query.category, (newCategory) => {
 .top-spacing {
   height: 25px;
 }
-
 .navbar {
   height: 75px;
   padding-right: 40px !important;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .container-fluid {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.navbar-brand {
+  margin-top: 0;
+}
+
+.nav-link {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .nav-btn {
@@ -109,7 +119,6 @@ watch(() => route.query.category, (newCategory) => {
   margin-left: 12px;
   height: 35px;
 }
-
 .nav-btn:hover {
   background: #d4de3a;
   transform: translateY(-1px);
@@ -167,4 +176,15 @@ watch(() => route.query.category, (newCategory) => {
   }
 }
 
+</style>
+<style scoped>
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar-brand img {
+  max-height: 40px;
+}
 </style>

@@ -19,5 +19,10 @@
   "exclude": [
     "node_modules",
     "dist"
+  ],
+  "words": [
+    "insourcelogo",
+    "fontawesome",
+    "materialdesignicons"
   ]
 }

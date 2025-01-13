@@ -11,15 +11,18 @@
   "type": "module",
   "dependencies": {
     "@bcwdev/auth0provider-client": "0.1.12",
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@mdi/font": "7.4.47",
     "@popperjs/core": "2.11.8",
     "@vueuse/components": "^12.2.0",
+    "@vueuse/motion": "^2.2.6",
     "axios": "1.7.4",
     "bootstrap": "5.3.3",
     "particles.js": "^2.0.0",
     "socket.io-client": "4.7.5",
     "sweetalert2": "11.12.4",
     "vue": "^3.4.37",
+    "vue-a11y": "^1.0.0",
     "vue-router": "^4.4.3"
   },
   "devDependencies": {

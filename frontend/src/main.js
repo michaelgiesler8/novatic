@@ -3,6 +3,8 @@ import App from './App.vue'
 import { registerGlobalComponents } from './registerGlobalComponents.js'
 import router from './router'
 import axios from 'axios'
+import '@fortawesome/fontawesome-free/css/all.css'
+
 
 
 import '@mdi/font/css/materialdesignicons.css'

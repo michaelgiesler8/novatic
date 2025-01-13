@@ -13,27 +13,34 @@
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import AccessibilityBar from './components/AccessibilityBar.vue'
+import ParticleBackground from './components/ParticleBackground.vue'
 import Navbar from './components/Navbar.vue'
-
-const AccessibilityBar = defineAsyncComponent(() => 
-  import('./components/AccessibilityBar.vue')
-)
-const ParticleBackground = defineAsyncComponent(() => 
-  import('./components/ParticleBackground.vue')
-)
 </script>
 
-<style>
-#app {
-  min-height: 100vh;
-}
+<style lang="scss">
+@import "./assets/scss/main.scss";
 
-.accessibility-bar {
-  z-index: 9999;
+#app {
+  font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .particle-container {
-  z-index: 0;
+  opacity: 0.3;
+  background: transparent;
+}
+
+.accessibility-bar {
+  position: fixed;
+  top: 4.5rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+main {
+  position: relative;
+  z-index: 2;
 }
 </style>
+
+// Need to check the global styles here

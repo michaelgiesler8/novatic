@@ -14,14 +14,15 @@ let particles = []
 
 const PARTICLE_COUNT = 80
 const CONNECTION_DISTANCE = 150
+
 class Particle {
   constructor(x, y) {
     this.x = x
     this.y = y
-    this.size = Math.random() * 1.5 + 0.5 // Slightly smaller particles
-    this.speedX = Math.random() * 0.3 - 0.15 // Slower movement
-    this.speedY = Math.random() * 0.3 - 0.15
-    this.opacity = Math.random() * 0.08 + 0.02 // Much more subtle opacity
+    this.size = Math.random() * 4 + 2.5
+    this.speedX = Math.random() * 0.5 - 0.25
+    this.speedY = Math.random() * 0.5 - 0.25
+    this.opacity = Math.random() * 0.7 + 0.5
   }
 
   update() {
@@ -35,18 +36,13 @@ class Particle {
   draw() {
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-    // Lighter, more theme-appropriate color
-    ctx.fillStyle = `rgba(240, 240, 240, ${this.opacity})`
+    ctx.fillStyle = `rgba(28, 144, 255, ${this.opacity})`
     ctx.fill()
   }
 }
 
 function init() {
   const canvas = particleCanvas.value
-  if (!canvas) {
-    return
-  }
-  
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
   ctx = canvas.getContext('2d')
@@ -71,7 +67,7 @@ function connectParticles(particle) {
     if (distance < CONNECTION_DISTANCE) {
       const opacity = 1 - (distance / CONNECTION_DISTANCE)
       ctx.beginPath()
-      ctx.strokeStyle = `rgba(205, 215, 47, ${opacity * 0.2})`
+      ctx.strokeStyle = `rgba(28, 144, 255, ${opacity * 0.2})`
       ctx.lineWidth = 1
       ctx.moveTo(particle.x, particle.y)
       ctx.lineTo(otherParticle.x, otherParticle.y)
@@ -81,10 +77,6 @@ function connectParticles(particle) {
 }
 
 function animate() {
-  if (!ctx) {
-    console.log('No context available')
-    return
-  }
   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
   
   particles.forEach(particle => {
@@ -97,14 +89,12 @@ function animate() {
 }
 
 onMounted(() => {
-  console.log('Particle background mounted')
   init()
   animate()
   window.addEventListener('resize', init)
 })
 
 onUnmounted(() => {
-  console.log('Particle background unmounted')
   cancelAnimationFrame(animationFrame)
   window.removeEventListener('resize', init)
 })
@@ -119,7 +109,7 @@ onUnmounted(() => {
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  background-color: #000;
+  background: linear-gradient(135deg, #FCFDFF 0%, #DBDCDD 30%, #676767 100%);
 }
 
 canvas {
