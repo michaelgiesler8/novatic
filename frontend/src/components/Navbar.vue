@@ -3,7 +3,7 @@
     <div class="top-spacing"></div>
     <nav class="navbar px-4 pe-5">
       <div class="container-fluid">
-        <a href="https://michaelgiesler8.github.io/novatic/">
+        <a href="https://admin.insourcetax.com/#/management/individuals/list">
           <img alt="logo" src="@/assets/img/insourcelogo.png" height="45" />
         </a>
         <div class="d-flex align-items-center">

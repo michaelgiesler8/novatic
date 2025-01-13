@@ -5,6 +5,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import eslintPlugin from 'vite-plugin-eslint'
 
 export default defineConfig({
+  base: 'https://michaelgiesler8.github.io/novatic/',
   plugins: [
     vue(),
     vueDevTools(),
